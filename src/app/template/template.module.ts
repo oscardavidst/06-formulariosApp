@@ -6,16 +6,8 @@ import { BasicosComponent } from './basicos/basicos.component';
 import { SwitchesComponent } from './switches/switches.component';
 import { DinamicosComponent } from './dinamicos/dinamicos.component';
 
-
 @NgModule({
-  declarations: [
-    BasicosComponent,
-    SwitchesComponent,
-    DinamicosComponent
-  ],
-  imports: [
-    CommonModule,
-    TemplateRoutingModule
-  ]
+  declarations: [BasicosComponent, SwitchesComponent, DinamicosComponent],
+  imports: [CommonModule, TemplateRoutingModule],
 })
-export class TemplateModule { }
+export class TemplateModule {}
