@@ -10,7 +10,7 @@ export class BasicosComponent {
   @ViewChild('miFormulario') miFormulario!: NgForm;
 
   guardar() {
-    console.log(this.miFormulario.value);
+    this.miFormulario.resetForm();
   }
 
   nombreValido(): boolean {
