@@ -31,4 +31,8 @@ export class DinamicosComponent {
   };
 
   guardar() {}
+
+  removerJuego(index: number) {
+    this.persona.juegos.splice(index, 1);
+  }
 }

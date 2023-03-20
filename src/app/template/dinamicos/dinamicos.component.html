@@ -50,14 +50,25 @@
           <label class="col-form-lable">Juegos</label>
         </div>
         <div class="col-sm-9">
-          <input
+          <div
+            class="input-group mb-1"
             *ngFor="let juego of persona.juegos; let i = index"
-            [(ngModel)]="juego.nombre"
-            name="juego_{{ i }}"
-            type="text"
-            class="form-control mb-1"
-            autocomplete="off"
-          />
+          >
+            <input
+              [(ngModel)]="juego.nombre"
+              name="juego_{{ i }}"
+              type="text"
+              class="form-control"
+              autocomplete="off"
+            />
+            <button
+              class="btn btn-outline-danger"
+              type="button"
+              (click)="removerJuego(i)"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
         </div>
       </div>
       <!-- Boton -->
