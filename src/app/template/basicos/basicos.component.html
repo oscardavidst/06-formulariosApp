@@ -17,12 +17,18 @@
             ngModel
             name="producto"
             required
+            minlength="3"
             type="text"
             placeholder="Nombre del producto"
             class="form-control"
             autocomplete="off"
           />
-          <span class="form-text text-danger"
+          <span
+            *ngIf="
+              miFormulario.controls['producto']?.invalid &&
+              miFormulario.controls['producto']?.touched
+            "
+            class="form-text text-danger"
             >El producto debe ser mínimo de 3 caracteres</span
           >
         </div>
@@ -76,6 +82,12 @@
   <div class="col">
     <span>Valid:</span>
     <pre>{{ miFormulario.valid | json }}</pre>
+    <hr />
+    <span>Pristine:</span>
+    <pre>{{ miFormulario.pristine | json }}</pre>
+    <hr />
+    <span>Toched:</span>
+    <pre>{{ miFormulario.touched | json }}</pre>
     <hr />
     <span>Value:</span>
     <pre>{{ miFormulario.value | json }}</pre>
