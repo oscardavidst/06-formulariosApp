@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-9">
           <input
-            ngModel
+            [(ngModel)]="persona.nombre"
             name="nombre"
             type="text"
             required
@@ -37,22 +37,27 @@
             </button>
             <input
               type="text"
-              placeholder="Agregar favorito"
+              placeholder="Nombre del juego"
               class="form-control col-sm-9"
               autocomplete="off"
             />
           </div>
         </div>
       </div>
-      <!-- Campo -->
+      <!-- Lista -->
       <div class="row align-items-center mb-2">
         <div class="col-sm-3 justify-content-end">
-          <label class="col-form-lable">Favoritos</label>
+          <label class="col-form-lable">Juegos</label>
         </div>
         <div class="col-sm-9">
-          <input type="text" class="form-control mb-1" autocomplete="off" />
-          <input type="text" class="form-control mb-1" autocomplete="off" />
-          <input type="text" class="form-control mb-1" autocomplete="off" />
+          <input
+            *ngFor="let juego of persona.juegos; let i = index"
+            [(ngModel)]="juego.nombre"
+            name="juego_{{ i }}"
+            type="text"
+            class="form-control mb-1"
+            autocomplete="off"
+          />
         </div>
       </div>
       <!-- Boton -->
@@ -69,5 +74,10 @@
         </div>
       </div>
     </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <pre>{{ persona | json }}</pre>
   </div>
 </div>
