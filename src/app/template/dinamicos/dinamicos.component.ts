@@ -3,9 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-dinamicos',
   templateUrl: './dinamicos.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class DinamicosComponent {
-
+  guardar() {}
 }
