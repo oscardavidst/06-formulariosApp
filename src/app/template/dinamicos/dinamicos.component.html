@@ -32,14 +32,20 @@
       <div class="row align-items-center mb-2">
         <div class="col">
           <div class="input-group">
-            <button class="btn btn-outline-primary col-sm-3">
+            <button
+              class="btn btn-outline-primary col-sm-3"
+              (click)="agregarJuego()"
+            >
               <i class="bi bi-arrow-90deg-down rotateY"></i> Agregar
             </button>
             <input
+              [(ngModel)]="juegoNuevo"
+              name="juegoNuevo"
               type="text"
               placeholder="Nombre del juego"
               class="form-control col-sm-9"
               autocomplete="off"
+              (keyup.enter)="agregarJuego()"
             />
           </div>
         </div>

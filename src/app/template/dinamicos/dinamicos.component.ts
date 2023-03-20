@@ -16,6 +16,7 @@ interface Juego {
   styles: [],
 })
 export class DinamicosComponent {
+  juegoNuevo: string = '';
   persona: Persona = {
     nombre: 'Oscar',
     juegos: [
@@ -31,6 +32,18 @@ export class DinamicosComponent {
   };
 
   guardar() {}
+
+  agregarJuego() {
+    if (!this.juegoNuevo) return;
+
+    const juego: Juego = {
+      id: this.persona.juegos.slice(-1)[0].id + 1,
+      nombre: this.juegoNuevo,
+    };
+    this.persona.juegos.push({ ...juego });
+
+    this.juegoNuevo = '';
+  }
 
   removerJuego(index: number) {
     this.persona.juegos.splice(index, 1);
