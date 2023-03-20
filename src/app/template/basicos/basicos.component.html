@@ -2,11 +2,7 @@
 <hr />
 <div class="row">
   <div class="col">
-    <form
-      #miFormulario="ngForm"
-      (ngSubmit)="guardar(miFormulario)"
-      autocomplete="off"
-    >
+    <form #miFormulario="ngForm" (ngSubmit)="guardar()" autocomplete="off">
       <!-- Campo -->
       <div class="row align-items-center mb-2">
         <div class="col-sm-3 justify-content-end">
@@ -23,12 +19,7 @@
             class="form-control"
             autocomplete="off"
           />
-          <span
-            *ngIf="
-              miFormulario.controls['producto']?.invalid &&
-              miFormulario.controls['producto']?.touched
-            "
-            class="form-text text-danger"
+          <span *ngIf="nombreValido()" class="form-text text-danger"
             >El producto debe ser mínimo de 3 caracteres</span
           >
         </div>
