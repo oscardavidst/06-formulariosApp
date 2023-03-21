@@ -1,1 +1,83 @@
-<p>basicos works!</p>
+<h2>Reactivos: <small>Básicos</small></h2>
+<hr />
+<div class="row">
+  <div class="col">
+    <form autocomplete="off">
+      <!-- Campo -->
+      <div class="row align-items-center mb-2">
+        <div class="col-sm-3 justify-content-end">
+          <label class="col-form-lable">Producto</label>
+        </div>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            placeholder="Nombre del producto"
+            class="form-control"
+            autocomplete="off"
+          />
+          <span class="form-text text-danger"
+            >El producto debe ser mínimo de 3 caracteres</span
+          >
+        </div>
+      </div>
+      <!-- Campo -->
+      <div class="row align-items-center mb-2">
+        <div class="col-sm-3">
+          <label class="col-form-lable">Precio</label>
+        </div>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            placeholder="Precio del producto"
+            class="form-control"
+            autocomplete="off"
+          />
+          <span class="form-text text-danger"
+            >El precio debe ser mayor a 0</span
+          >
+        </div>
+      </div>
+      <!-- Campo -->
+      <div class="row align-items-center mb-2">
+        <div class="col-sm-3">
+          <label class="col-form-lable">Existencias</label>
+        </div>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            placeholder="Existencias del producto"
+            class="form-control"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <!-- Boton -->
+      <div class="row">
+        <div class="col text-center">
+          <button class="btn btn-primary float-end" type="submit">
+            <i class="bi bi-save"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- <div class="row">
+  <div class="col">
+    <span>Valid:</span>
+    <pre>{{ miFormulario.valid | json }}</pre>
+    <hr />
+    <span>Pristine:</span>
+    <pre>{{ miFormulario.pristine | json }}</pre>
+    <hr />
+    <span>Toched:</span>
+    <pre>{{ miFormulario.touched | json }}</pre>
+    <hr />
+    <span>Existencias - CustomMin:</span>
+    <pre>{{ miFormulario.controls["existencias"]?.errors | json }}</pre>
+    <hr />
+    <span>Value:</span>
+    <pre>{{ miFormulario.value | json }}</pre>
+  </div>
+</div> -->

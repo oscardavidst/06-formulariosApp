@@ -92,7 +92,11 @@
     <pre>{{ miFormulario.touched | json }}</pre>
     <hr />
     <span>Existencias - CustomMin:</span>
-    <pre>{{ miFormulario.controls["existencias"]?.errors | json }}</pre>
+    <pre>{{
+      miFormulario.controls["existencias"]
+        ? (miFormulario.controls["existencias"].errors | json)
+        : ""
+    }}</pre>
     <hr />
     <span>Value:</span>
     <pre>{{ miFormulario.value | json }}</pre>
