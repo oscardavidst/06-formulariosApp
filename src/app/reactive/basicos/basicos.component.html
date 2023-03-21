@@ -2,7 +2,7 @@
 <hr />
 <div class="row">
   <div class="col">
-    <form autocomplete="off">
+    <form autocomplete="off" [formGroup]="miFormulario">
       <!-- Campo -->
       <div class="row align-items-center mb-2">
         <div class="col-sm-3 justify-content-end">
@@ -10,6 +10,7 @@
         </div>
         <div class="col-sm-9">
           <input
+            formControlName="nombre"
             type="text"
             placeholder="Nombre del producto"
             class="form-control"
@@ -63,7 +64,7 @@
   </div>
 </div>
 
-<!-- <div class="row">
+<div class="row">
   <div class="col">
     <span>Valid:</span>
     <pre>{{ miFormulario.valid | json }}</pre>
@@ -80,4 +81,4 @@
     <span>Value:</span>
     <pre>{{ miFormulario.value | json }}</pre>
   </div>
-</div> -->
+</div>
