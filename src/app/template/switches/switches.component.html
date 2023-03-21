@@ -11,6 +11,8 @@
         <div class="col-sm-9">
           <div class="form-check">
             <input
+              [(ngModel)]="persona.genero"
+              value="M"
               class="form-check-input"
               type="radio"
               name="radioGenero"
@@ -22,6 +24,9 @@
           </div>
           <div class="form-check">
             <input
+              [(ngModel)]="persona.genero"
+              value="F"
+              required
               class="form-check-input"
               type="radio"
               name="radioGenero"
@@ -41,6 +46,9 @@
         <div class="col-sm-9">
           <div class="form-check form-switch">
             <input
+              [(ngModel)]="persona.notificaciones"
+              name="checkNotificaciones"
+              required
               class="form-check-input"
               type="checkbox"
               role="switch"
@@ -59,7 +67,14 @@
         </div>
         <div class="col-sm-9">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="terminos" />
+            <input
+              [(ngModel)]="terminos"
+              name="checkTerminos"
+              required
+              class="form-check-input"
+              type="checkbox"
+              id="terminos"
+            />
             <label class="form-check-label" for="terminos">
               Términos y condiciones
             </label>
@@ -79,5 +94,23 @@
         </div>
       </div>
     </form>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <hr />
+  <div class="col">
+    <span>Persona:</span>
+    <pre>{{ persona | json }}</pre>
+  </div>
+  <hr />
+  <div class="col">
+    <span>Formulario:</span>
+    <pre>{{ miFormulario.value | json }}</pre>
+  </div>
+  <hr />
+  <div class="col">
+    <span>Form valid:</span>
+    <pre>{{ miFormulario.valid | json }}</pre>
   </div>
 </div>
