@@ -2,7 +2,7 @@
 <hr />
 <div class="row">
   <div class="col">
-    <form autocomplete="off">
+    <form autocomplete="off" [formGroup]="miFormulario">
       <!-- Campo -->
       <div class="row align-items-center mb-2">
         <div class="col-sm-3 justify-content-end">
@@ -11,10 +11,10 @@
         <div class="col-sm-9">
           <div class="form-check">
             <input
+              formControlName="genero"
               value="M"
               class="form-check-input"
               type="radio"
-              name="radioGenero"
               id="radioMasculino"
             />
             <label class="form-check-label" for="radioMasculino">
@@ -23,10 +23,10 @@
           </div>
           <div class="form-check">
             <input
+              formControlName="genero"
               value="F"
               class="form-check-input"
               type="radio"
-              name="radioGenero"
               id="radioFemenino"
             />
             <label class="form-check-label" for="radioFemenino">
@@ -43,10 +43,9 @@
         <div class="col-sm-9">
           <div class="form-check form-switch">
             <input
-              required
+              formControlName="notificaciones"
               class="form-check-input"
               type="checkbox"
-              role="switch"
               id="flexSwitchCheckDefault"
             />
             <label class="form-check-label" for="flexSwitchCheckDefault"
@@ -62,7 +61,12 @@
         </div>
         <div class="col-sm-9">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="terminos" />
+            <input
+              formControlName="terminos"
+              class="form-check-input"
+              type="checkbox"
+              id="terminos"
+            />
             <label class="form-check-label" for="terminos">
               Términos y condiciones
             </label>
@@ -72,7 +76,11 @@
       <!-- Boton -->
       <div class="row">
         <div class="col">
-          <button class="btn btn-primary float-end" type="button">
+          <button
+            class="btn btn-primary float-end"
+            type="button"
+            (click)="guardar()"
+          >
             <i class="bi bi-save"></i> Guardar
           </button>
         </div>
@@ -81,7 +89,8 @@
   </div>
 </div>
 
-<!-- <div class="row mt-4">
+<div class="row mt-4">
+  <h4>Formulario</h4>
   <div class="col">
     <span>Valid:</span>
     <pre>{{ miFormulario.valid | json }}</pre>
@@ -94,11 +103,15 @@
     <span>Toched:</span>
     <pre>{{ miFormulario.touched | json }}</pre>
   </div>
-</div>
-<hr />
-<div class="row">
-  <div class="col">
+  <div class="col-12">
     <span>Value:</span>
     <pre>{{ miFormulario.value | json }}</pre>
   </div>
-</div> -->
+</div>
+<hr />
+<div class="row">
+  <h4>Persona</h4>
+  <div class="col">
+    <pre>{{ persona | json }}</pre>
+  </div>
+</div>
