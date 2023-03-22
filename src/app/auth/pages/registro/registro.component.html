@@ -1,1 +1,81 @@
-<p>registro works!</p>
+<h2>Reactivos: <small>Básicos</small></h2>
+<hr />
+<div class="row">
+  <div class="col">
+    <form autocomplete="off">
+      <!-- Campo -->
+      <div class="row align-items-center mb-2">
+        <div class="col-sm-3 justify-content-end">
+          <label class="col-form-lable">Nombre</label>
+        </div>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            placeholder="Nombre del usuario"
+            class="form-control"
+            autocomplete="off"
+          />
+          <span class="form-text text-danger"
+            >Debe ser en formato de nombre y apellido</span
+          >
+        </div>
+      </div>
+      <!-- Campo -->
+      <div class="row align-items-center mb-2">
+        <div class="col-sm-3">
+          <label class="col-form-lable">Email</label>
+        </div>
+        <div class="col-sm-9">
+          <input
+            type="email"
+            placeholder="Email del usuario"
+            class="form-control"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <!-- Campo -->
+      <div class="row align-items-center mb-2">
+        <div class="col-sm-3">
+          <label class="col-form-lable">Usuario</label>
+        </div>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            placeholder="Usuario de ingreso"
+            class="form-control"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <!-- Campo -->
+      <div class="row align-items-center mb-2">
+        <div class="col-sm-3">
+          <label class="col-form-lable">Contraseña</label>
+        </div>
+        <div class="col-sm-9">
+          <input
+            type="password"
+            placeholder="Contraseña"
+            class="form-control"
+            autocomplete="off"
+          />
+          <input
+            type="password"
+            placeholder="Confirmar contraseña"
+            class="form-control mt-1"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <!-- Boton -->
+      <div class="row">
+        <div class="col text-center">
+          <button class="btn btn-primary float-end" type="submit">
+            <i class="bi bi-person-plus-fill"></i> Crear
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
