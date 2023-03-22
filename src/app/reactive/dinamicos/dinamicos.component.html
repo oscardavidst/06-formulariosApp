@@ -2,7 +2,7 @@
 <hr />
 <div class="row">
   <div class="col">
-    <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="guardar()">
+    <form autocomplete="off" [formGroup]="miFormulario">
       <!-- Campo -->
       <div class="row align-items-center mb-2">
         <div class="col-sm-3 justify-content-end">
@@ -16,8 +16,11 @@
             class="form-control"
             autocomplete="off"
           />
-          <span class="form-text text-danger" *ngIf="!validarCampo('nombre')"
-            >El nombre de la persona es obligatorio</span
+          <span
+            class="form-text text-danger"
+            *ngIf="!validarCampoFormulario('nombre')"
+            >El nombre de la persona es obligatorio y debe tener 3 o mas
+            caracteres</span
           >
         </div>
       </div>
@@ -25,17 +28,28 @@
       <div class="row align-items-center mb-2">
         <div class="col">
           <div class="input-group">
-            <button class="btn btn-outline-primary col-sm-3" click="a=1">
+            <button
+              type="button"
+              class="btn btn-outline-primary col-sm-3"
+              (click)="agregarJuego()"
+            >
               <i class="bi bi-arrow-90deg-down rotateY"></i> Agregar
             </button>
             <input
+              [formControl]="nuevoJuego"
               type="text"
               placeholder="Nombre del juego"
               class="form-control col-sm-9"
               autocomplete="off"
-              keyup.enter="a=1"
+              (keyup.enter)="agregarJuego()"
             />
           </div>
+          <!-- <span
+            class="form-text text-danger offset-sm-3"
+            *ngIf="!validarCampo(nuevoJuego)"
+            >El nombre del juego es obligatorio y debe tener 3 o mas
+            caracteres</span 
+          > -->
         </div>
       </div>
       <!-- Lista -->
@@ -63,7 +77,11 @@
       <!-- Boton -->
       <div class="row">
         <div class="col">
-          <button class="btn btn-primary float-end" type="submit">
+          <button
+            class="btn btn-primary float-end"
+            type="button"
+            (click)="guardar()"
+          >
             <i class="bi bi-save"></i> Guardar
           </button>
         </div>
@@ -73,6 +91,7 @@
 </div>
 
 <div class="row mt-4">
+  <h4>Formulario</h4>
   <div class="col">
     <span>Valid:</span>
     <pre>{{ miFormulario.valid | json }}</pre>
@@ -86,15 +105,21 @@
     <pre>{{ miFormulario.touched | json }}</pre>
   </div>
 </div>
-<hr />
 <div class="row">
   <div class="col">
     <span>Value:</span>
     <pre>{{ miFormulario.value | json }}</pre>
   </div>
 </div>
-<!-- <div class="row">
+<hr />
+<div class="row">
+  <h4>nuevoJuego</h4>
   <div class="col">
-    <pre>{{ persona | json }}</pre>
+    <span>Value:</span>
+    <pre>{{ nuevoJuego.value | json }}</pre>
   </div>
-</div> -->
+  <div class="col">
+    <span>Valid:</span>
+    <pre>{{ nuevoJuego.valid | json }}</pre>
+  </div>
+</div>
