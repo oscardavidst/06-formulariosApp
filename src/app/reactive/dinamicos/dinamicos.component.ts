@@ -63,4 +63,8 @@ export class DinamicosComponent {
       this.nuevoJuego.reset();
     }
   }
+
+  borrarJuego(index: number) {
+    this.juegosArr.removeAt(index);
+  }
 }
