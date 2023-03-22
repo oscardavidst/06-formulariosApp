@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dinamicos',
@@ -9,7 +9,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DinamicosComponent {
   miFormulario: FormGroup = this.formBuilder.group({
     nombre: ['', [Validators.required, Validators.minLength(3)]],
+    juegos: this.formBuilder.array([['Grand Thef Auto VI'], ['Dofus']]),
   });
+
+  get juegosArr() {
+    return this.miFormulario.get('juegos') as FormArray;
+  }
 
   constructor(private formBuilder: FormBuilder) {}
 
