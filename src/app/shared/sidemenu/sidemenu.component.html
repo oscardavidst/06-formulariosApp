@@ -23,3 +23,17 @@
     {{ menu.texto }}
   </a>
 </div>
+
+<hr />
+
+<h2>Validaciones</h2>
+<div class="list-group">
+  <a
+    *ngFor="let menu of authMenu"
+    class="list-group-item list-group-item-action"
+    routerLinkActive="active"
+    [routerLink]="menu.ruta"
+  >
+    {{ menu.texto }}
+  </a>
+</div>
