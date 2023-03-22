@@ -2,7 +2,7 @@
 <hr />
 <div class="row">
   <div class="col">
-    <form autocomplete="off">
+    <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="guardar()">
       <!-- Campo -->
       <div class="row align-items-center mb-2">
         <div class="col-sm-3 justify-content-end">
@@ -10,12 +10,13 @@
         </div>
         <div class="col-sm-9">
           <input
+            formControlName="nombre"
             type="text"
             placeholder="Nombre de la persona"
             class="form-control"
             autocomplete="off"
           />
-          <span class="form-text text-danger"
+          <span class="form-text text-danger" *ngIf="!validarCampo('nombre')"
             >El nombre de la persona es obligatorio</span
           >
         </div>
@@ -57,7 +58,7 @@
       <!-- Boton -->
       <div class="row">
         <div class="col">
-          <button class="btn btn-primary float-end" type="button" click="a=1">
+          <button class="btn btn-primary float-end" type="submit">
             <i class="bi bi-save"></i> Guardar
           </button>
         </div>
@@ -66,6 +67,27 @@
   </div>
 </div>
 
+<div class="row mt-4">
+  <div class="col">
+    <span>Valid:</span>
+    <pre>{{ miFormulario.valid | json }}</pre>
+  </div>
+  <div class="col">
+    <span>Pristine:</span>
+    <pre>{{ miFormulario.pristine | json }}</pre>
+  </div>
+  <div class="col">
+    <span>Toched:</span>
+    <pre>{{ miFormulario.touched | json }}</pre>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col">
+    <span>Value:</span>
+    <pre>{{ miFormulario.value | json }}</pre>
+  </div>
+</div>
 <!-- <div class="row">
   <div class="col">
     <pre>{{ persona | json }}</pre>
