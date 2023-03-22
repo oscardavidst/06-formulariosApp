@@ -2,7 +2,7 @@
 <hr />
 <div class="row">
   <div class="col">
-    <form autocomplete="off" [formGroup]="miFormulario">
+    <form autocomplete="off" [formGroup]="miFormulario" (submit)="guardar()">
       <!-- Campo -->
       <div class="row align-items-center mb-2">
         <div class="col-sm-3 justify-content-end">
@@ -16,7 +16,7 @@
             class="form-control"
             autocomplete="off"
           />
-          <span class="form-text text-danger"
+          <span class="form-text text-danger" *ngIf="!validarCampo('nombre')"
             >El producto debe ser mínimo de 3 caracteres</span
           >
         </div>
@@ -34,7 +34,7 @@
             class="form-control"
             autocomplete="off"
           />
-          <span class="form-text text-danger"
+          <span class="form-text text-danger" *ngIf="!validarCampo('precio')"
             >El precio debe ser mayor a 0</span
           >
         </div>
@@ -52,16 +52,17 @@
             class="form-control"
             autocomplete="off"
           />
+          <span
+            class="form-text text-danger"
+            *ngIf="!validarCampo('existencias')"
+            >El precio debe ser mayor a 0</span
+          >
         </div>
       </div>
       <!-- Boton -->
       <div class="row">
         <div class="col text-center">
-          <button
-            class="btn btn-primary float-end"
-            type="submit"
-            [disabled]="miFormulario.invalid"
-          >
+          <button class="btn btn-primary float-end" type="submit">
             <i class="bi bi-save"></i> Guardar
           </button>
         </div>
@@ -70,20 +71,23 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row mt-4">
   <div class="col">
     <span>Valid:</span>
     <pre>{{ miFormulario.valid | json }}</pre>
-    <hr />
+  </div>
+  <div class="col">
     <span>Pristine:</span>
     <pre>{{ miFormulario.pristine | json }}</pre>
-    <hr />
+  </div>
+  <div class="col">
     <span>Toched:</span>
     <pre>{{ miFormulario.touched | json }}</pre>
-    <hr />
-    <span>Existencias - CustomMin:</span>
-    <pre>{{ miFormulario.controls["existencias"]?.errors | json }}</pre>
-    <hr />
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col">
     <span>Value:</span>
     <pre>{{ miFormulario.value | json }}</pre>
   </div>
