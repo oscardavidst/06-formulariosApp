@@ -6,34 +6,39 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { ValidatorService } from 'src/app/shared/validators/validator.service';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
   styles: [],
 })
 export class RegistroComponent implements OnInit {
-  regexNombreApellido: string = '([a-zA-Z ]+) ([a-zA-Z ]+)';
-  regexEmail: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
-
-  validacionPersonalizada(control: FormControl) {
-    const value = control.value;
-    if (value === 'admin' || value === 'administrador') {
-      return { validacionPersonalizada: true };
-    } else {
-      return null;
-    }
-  }
-
   miFormulario: FormGroup = this.formBuilder.group({
     nombre: [
       '',
-      [Validators.required, Validators.pattern(this.regexNombreApellido)],
+      [
+        Validators.required,
+        Validators.pattern(this.validatorService.regexNombreApellido),
+      ],
     ],
-    email: ['', [Validators.required, Validators.pattern(this.regexEmail)]],
-    usuario: ['', [Validators.required, this.validacionPersonalizada]],
+    email: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern(this.validatorService.regexEmail),
+      ],
+    ],
+    usuario: [
+      '',
+      [Validators.required, this.validatorService.validacionPersonalizada],
+    ],
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private validatorService: ValidatorService
+  ) {}
 
   ngOnInit(): void {
     // throw new Error('Method not implemented.');

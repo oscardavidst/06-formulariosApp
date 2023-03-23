@@ -52,6 +52,9 @@
             class="form-control"
             autocomplete="off"
           />
+          <span class="form-text text-danger" *ngIf="!validarCampo('usuario')"
+            >El usuario no puede ser "admin" o "administrador"</span
+          >
         </div>
       </div>
       <!-- Campo -->
