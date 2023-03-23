@@ -64,17 +64,27 @@
         </div>
         <div class="col-sm-9">
           <input
+            formControlName="password"
             type="password"
             placeholder="Contraseña"
             class="form-control"
             autocomplete="off"
           />
+          <span class="form-text text-danger" *ngIf="!validarCampo('password')"
+            >La contraseña debe tener 8 caracteres o mas</span
+          >
           <input
+            formControlName="passwordConfirm"
             type="password"
             placeholder="Confirmar contraseña"
             class="form-control mt-1"
             autocomplete="off"
           />
+          <span
+            class="form-text text-danger"
+            *ngIf="!validarCampo('passwordConfirm')"
+            >La contraseñas no coinciden</span
+          >
         </div>
       </div>
       <!-- Boton -->
@@ -106,6 +116,18 @@
   <div class="col">
     <span>Usuario:</span>
     <pre>{{ miFormulario.controls["usuario"].errors | json }}</pre>
+  </div>
+  <div class="col">
+    <span>Password:</span>
+    <pre>{{ miFormulario.controls["password"].errors | json }}</pre>
+  </div>
+  <div class="col">
+    <span>Password R:</span>
+    <pre>{{ miFormulario.controls["passwordConfirm"].errors | json }}</pre>
+  </div>
+  <div class="col">
+    <span>Form:</span>
+    <pre>{{ miFormulario.errors | json }}</pre>
   </div>
 </div>
 <hr />

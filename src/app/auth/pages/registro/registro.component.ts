@@ -3,6 +3,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  NgModel,
   Validators,
 } from '@angular/forms';
 
@@ -14,26 +15,35 @@ import { ValidatorService } from 'src/app/shared/validators/validator.service';
   styles: [],
 })
 export class RegistroComponent implements OnInit {
-  miFormulario: FormGroup = this.formBuilder.group({
-    nombre: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(this.validatorService.regexNombreApellido),
+  miFormulario: FormGroup = this.formBuilder.group(
+    {
+      nombre: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(this.validatorService.regexNombreApellido),
+        ],
       ],
-    ],
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(this.validatorService.regexEmail),
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(this.validatorService.regexEmail),
+        ],
       ],
-    ],
-    usuario: [
-      '',
-      [Validators.required, this.validatorService.validacionPersonalizada],
-    ],
-  });
+      usuario: [
+        '',
+        [Validators.required, this.validatorService.validacionPersonalizada],
+      ],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      passwordConfirm: ['', [Validators.required]],
+    },
+    {
+      validators: [
+        this.validatorService.camposIguales('password', 'passwordConfirm'),
+      ],
+    }
+  );
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,7 +51,11 @@ export class RegistroComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
+    this.miFormulario.reset({
+      nombre: 'Oscar David Soto Tellez',
+      email: 'oscarqpzm95@gmail.com',
+      usuario: 'oscardavidst',
+    });
   }
 
   validarCampo(campo: string) {
