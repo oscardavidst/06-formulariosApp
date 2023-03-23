@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -10,12 +15,22 @@ export class RegistroComponent implements OnInit {
   regexNombreApellido: string = '([a-zA-Z ]+) ([a-zA-Z ]+)';
   regexEmail: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 
+  validacionPersonalizada(control: FormControl) {
+    const value = control.value;
+    if (value === 'admin' || value === 'administrador') {
+      return { validacionPersonalizada: true };
+    } else {
+      return null;
+    }
+  }
+
   miFormulario: FormGroup = this.formBuilder.group({
     nombre: [
       '',
       [Validators.required, Validators.pattern(this.regexNombreApellido)],
     ],
     email: ['', [Validators.required, Validators.pattern(this.regexEmail)]],
+    usuario: ['', [Validators.required, this.validacionPersonalizada]],
   });
 
   constructor(private formBuilder: FormBuilder) {}
