@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { EmailValidatorService } from 'src/app/shared/validators/email-validator.service';
 import { ValidatorService } from 'src/app/shared/validators/validator.service';
 
 @Component({
@@ -30,6 +31,7 @@ export class RegistroComponent implements OnInit {
           Validators.required,
           Validators.pattern(this.validatorService.regexEmail),
         ],
+        [this.emailValidatorService],
       ],
       usuario: [
         '',
@@ -47,7 +49,8 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private validatorService: ValidatorService
+    private validatorService: ValidatorService,
+    private emailValidatorService: EmailValidatorService
   ) {}
 
   ngOnInit(): void {
