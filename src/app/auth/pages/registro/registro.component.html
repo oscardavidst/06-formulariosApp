@@ -27,13 +27,22 @@
           <label class="col-form-lable">Email</label>
         </div>
         <div class="col-sm-9">
-          <input
-            formControlName="email"
-            type="email"
-            placeholder="Email del usuario"
-            class="form-control"
-            autocomplete="off"
-          />
+          <div class="row">
+            <!-- <div
+              *ngIf="miFormulario.controls['email']?.status === 'PENDING'"
+              class="col-1 input-group-text spinner-border"
+              role="status"
+            ></div> -->
+            <div class="col">
+              <input
+                formControlName="email"
+                type="email"
+                placeholder="Email del usuario"
+                class="form-control"
+                autocomplete="off"
+              />
+            </div>
+          </div>
           <span class="form-text text-danger" *ngIf="!validarCampo('email')"
             >El email es obligatorio y válido</span
           >
@@ -94,6 +103,7 @@
             class="btn btn-primary float-end"
             type="button"
             (click)="guardar()"
+            [disabled]="miFormulario.pending"
           >
             <i class="bi bi-person-plus-fill"></i> Crear
           </button>
@@ -112,6 +122,7 @@
   <div class="col">
     <span>Email:</span>
     <pre>{{ miFormulario.controls["email"].errors | json }}</pre>
+    <pre>{{ miFormulario.controls["email"].status | json }}</pre>
   </div>
   <div class="col">
     <span>Usuario:</span>
@@ -133,6 +144,10 @@
 <hr />
 <div class="row">
   <h4>Formulario</h4>
+  <div class="col">
+    <span>Status:</span>
+    <pre>{{ miFormulario.status | json }}</pre>
+  </div>
   <div class="col">
     <span>Valid:</span>
     <pre>{{ miFormulario.valid | json }}</pre>
