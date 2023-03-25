@@ -61,6 +61,16 @@ export class RegistroComponent implements OnInit {
     });
   }
 
+  errorEmail(): string {
+    return this.miFormulario.controls['email']?.errors?.['required']
+      ? 'El email es obligatorio'
+      : this.miFormulario.controls['email']?.errors?.['pattern']
+      ? 'El email debe ser válido'
+      : this.miFormulario.controls['email']?.errors?.['emailExistente']
+      ? 'El email ya está en uso'
+      : '';
+  }
+
   validarCampo(campo: string) {
     return !(
       this.miFormulario.controls[campo].errors &&
