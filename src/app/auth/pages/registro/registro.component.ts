@@ -62,11 +62,12 @@ export class RegistroComponent implements OnInit {
   }
 
   errorEmail(): string {
-    return this.miFormulario.controls['email']?.errors?.['required']
+    const errors = this.miFormulario.controls['email']?.errors;
+    return errors?.['required']
       ? 'El email es obligatorio'
-      : this.miFormulario.controls['email']?.errors?.['pattern']
+      : errors?.['pattern']
       ? 'El email debe ser válido'
-      : this.miFormulario.controls['email']?.errors?.['emailExistente']
+      : errors?.['emailExistente']
       ? 'El email ya está en uso'
       : '';
   }
